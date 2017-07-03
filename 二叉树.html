@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二叉树</title>
+</head>
+
+<body>
+    <script>
+        function BinaryTree() {
+            this.root = null;
+
+            this.node = function (key) {
+                this.key = key;
+                this.left = null;
+                this.right = null;
+            }
+            this.insert = function (newNode) {
+                if (this.root === null) {
+                    this.root = newNode;
+                } else {
+                    insertNode(this.root, newNode);
+                }
+            }
+            this.show = function () {
+                return this.root;
+            }
+            var insertNode = function (node, newNode) {
+                if (newNode.key < node.key) {
+                    if (node.left === null) {
+                        node.left = newNode;
+                    } else {
+                        insertNode(node.left, newNode);
+                    }
+                } else {
+                    if (node.right === null) {
+                        node.right = newNode;
+                    } else {
+                        insertNode(node.right, newNode);
+                    }
+                }
+            }
+        }
+        // 二叉树不能插入相同的key
+        var tree = new BinaryTree();
+        var newNode1 = new tree.node(11);
+        var newNode2 = new tree.node(12);
+        tree.insert(newNode1);
+        tree.insert(newNode2);
+        var result = tree.show();
+        console.log('result', result);
+        var binaryTree = function () {
+            var root = null;
+            var node = function (key) {
+                this.key = key;
+                this.left = null;
+                this.right = null;
+            }
+        }
+        // 搜索
+        var doSearch = function (key, obj) {
+            if (obj.left) {
+                if (obj.left.key === key) {
+                    return obj.left;
+                } else {
+                    doSearch(key, obj.left);
+                }
+            }
+            if (obj.right) {
+                if (obj.right.key === key) {
+                    return obj.right;
+                } else {
+                    doSearch(key, obj.right);
+                }
+            }
+        }
+        var searchResult = doSearch(12, result);
+        console.log('searchResult', searchResult);
+        // 删除
+        var removeNode = function (key, result) {
+            if (result.key === key) {
+                return null;
+            }
+            if (result.left) {
+                if (result.left.key === key) {
+                    delete result.left;
+                    return result;
+                } else {
+                    removeNode(key, result.left);
+                }
+            }
+            if (result.right) {
+                if (result.right.key === key) {
+                    delete result.right;
+                    return result;
+                } else {
+                    removeNode(key, result.right);
+                }
+            }
+        }
+        var removeResult = removeNode(11, result);
+        console.log('removeResult', removeResult);
+    </script>
+</body>
+
+</html>

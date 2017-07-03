@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 找出重复最多的字母,且是哪个
+        const str = "126776776777677665333222";
+
+        function check(str) {
+            var char;
+            var charObj = {};
+            for (var index = 0; index < str.length; index++) {
+                var element = str.charAt(index);
+                if (charObj[element]) {
+                    charObj[element] += 1;
+                } else {
+                    charObj[element] = 1;
+                }
+            }
+
+            var maxValue = 1;
+            for (var item in charObj) {
+                const val = charObj[item];
+                if (val > maxValue) {
+                    maxValue = val;
+                    char = item;
+                }
+            }
+            //重复的最多的字符是哪一个
+            return {
+                max:maxValue,
+                value:char
+            };
+        }
+        var value = check(str);
+        console.log('value', value);
+    </script>
+</body>
+
+</html>

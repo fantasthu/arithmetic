@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成固定长度随机字符串</title>
+</head>
+
+<body>
+    <script>
+        var randomStr = function (num) {
+            var nativeStr = "abcdefghijklmnopqrstuvwxyz9876543210";
+            var nativeLen = nativeStr.length;
+            var temp = '';
+            for (var index = 0; index < num; index++) {
+                temp = nativeStr.charAt(Math.floor(Math.random() * nativeLen)) + temp;
+            }
+            return temp;
+        }
+        console.log('randomStr', randomStr(3));
+    </script>
+</body>
+
+</html>

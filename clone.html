@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clone</title>
+</head>
+
+<body>
+    <script>
+        // 递归方式实现深克隆
+        var clone = function (defaultObj, target) {
+            if (typeof defaultObj === 'object') {
+                for (var i in target) {
+                    var value = target[i];
+                    if (typeof value === 'object') {
+                        defaultObj[i] = {}
+                        clone(defaultObj[i], value);
+                    } else {
+                        defaultObj[i] = value;
+                    }
+                }
+                return defaultObj;
+            }
+        }
+        var res = clone({
+            name: 2
+        }, {
+            name: 1,
+            age: 2,
+            person: {
+                sex: 1
+            }
+        });
+        console.log('clone', res);
+
+
+        function a(d, t) {
+            d.push('d');
+            return function (c, d) {
+                return d.push('c');
+            }
+        }
+    </script>
+</body>
+
+</html>
